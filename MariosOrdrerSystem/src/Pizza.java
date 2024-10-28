@@ -7,7 +7,7 @@ private static ArrayList<Pizza> Menu = new ArrayList<>();
 private static int totalPizzaNummer = 0;
 private int pizzaNummer;
 
-//Laver en constructor
+//Laver en constructor.
 Pizza(String pizzaName, String pizzaToppings) {
 
     this.pizzaName = pizzaName;
@@ -17,9 +17,9 @@ Pizza(String pizzaName, String pizzaToppings) {
 
     Menu.add(this);
 }
-
+//Her laver vi en metode hvorpå vi instansierer alle vores pizzaer.
     public static void instansierPizza() {
-    //Her laver vi en metode hvorpå vi instansierer alle vores pizzaer.
+
         Pizza pepperoni = new Pizza("Pepperoni","Tomatsovs, Ost og Pepperoni");
         Pizza hawaii = new Pizza("Hawaii","Tomatsovs, Ost, Skinke og Ananas");
         Pizza margherita = new Pizza("Margherita", "Tomatsovs og Ost");
@@ -54,9 +54,8 @@ Pizza(String pizzaName, String pizzaToppings) {
     }
 
 
-//Opretter en metode til at kunne printe pizzaens attributter i en string
+//Opretter en metode til at kunne printe pizzaens attributter i en string som bliver brugt til at instanticiere en menu
 public String getPizzaString() {
-    //Metode til man kan få pizzaens attributter til fx. menu.
     return this.pizzaNummer +": "+ this.pizzaName + " " + this.pizzaToppings;
 }
 //Opretter en metode til at printe pizzaens attributter i en string, uden ingredienserne, for at skabe bedre readability for Mario
@@ -71,6 +70,7 @@ public static void getMenu(){
         System.out.println(pizza.getPizzaString());
     }
 }
+
 public static ArrayList<Pizza> fåMenuArray(){
     return Menu;
 }

@@ -6,7 +6,6 @@ public class OrdreListe {
 
     }
 
-
 //Opretter en metode som gør at vi kan tilføje en ordre, til vores ordreliste.
 public void tilføjOrdre(Ordre ordre) {
         OrdreListe.add(ordre);
@@ -16,9 +15,5 @@ public void udskrivOrdreListen(){
         for (Ordre ordre : OrdreListe) {
             ordre.visOrdre();
         }
-}
-
-
-
-
+ }
 }
