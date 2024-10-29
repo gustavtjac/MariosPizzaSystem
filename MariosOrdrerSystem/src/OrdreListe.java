@@ -7,13 +7,49 @@ public class OrdreListe {
     }
 
 //Opretter en metode som gør at vi kan tilføje en ordre, til vores ordreliste.
-public void tilføjOrdre(Ordre ordre) {
+public static void tilføjOrdre(Ordre ordre) {
         OrdreListe.add(ordre);
 }
+
 //Opretter en metode som udskriver vores ordreliste.
-public void udskrivOrdreListen(){
+public static void udskrivOrdreListen(){
         for (Ordre ordre : OrdreListe) {
             ordre.visOrdre();
         }
  }
+//Laver en metode hvor vi kan fjerne en ordre fra ordrelisten.
+public static void fjernOrdreFraListe(int nummer) {
+        int temp = 0;
+    for (Ordre ordre : OrdreListe) {
+        if (nummer==ordre.fåOrdreId()){
+            temp = OrdreListe.indexOf(ordre);
+        }
+    }
+    OrdreListe.remove(temp);
+    System.out.println("Ordren er nu slettet.");
+}
+//Laver en metode der gør man kan afslutte en ordre og gemme de nødvendige salgsdata.
+public static void FærdiggørOrdreFraListe(int nummer){
+        int temp = 0;
+     for (Ordre ordre : OrdreListe) {
+            if (nummer==ordre.fåOrdreId()){
+                temp = OrdreListe.indexOf(ordre);
+                }
+     }
+
+     Salgsdata.tilføjOmsætning(OrdreListe.get(temp).fåTotalPrisOrdre());
+     OrdreListe.get(temp).tilføjPizzaSalg();
+     OrdreListe.remove(temp);
+     System.out.println("Ordren er nu fjernet og dataen er talt op");
+    }
+
+
+
+
+
+
+public static ArrayList<Ordre> fåOrdreliste(){
+        return OrdreListe;
+}
+
 }
