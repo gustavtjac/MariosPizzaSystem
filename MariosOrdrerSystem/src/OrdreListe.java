@@ -47,7 +47,7 @@ public static void FærdiggørOrdreFraListe(int nummer){
 
 
 
-
+//Laver en getter der får ordrelisten.
 public static ArrayList<Ordre> fåOrdreliste(){
         return OrdreListe;
 }
