@@ -54,7 +54,7 @@ public class Main {
        }else{
            Scanner sc = new Scanner(System.in);
            OrdreListe.udskrivOrdreListen();
-           System.out.println("Skriv det ordrenummer du vil have fjernet");
+           System.out.println("Skriv det ordrenummer du vil have fjernet: ");
            int tempsvar = sc.nextInt();
            OrdreListe.FærdiggørOrdreFraListe(tempsvar);
        }
@@ -67,7 +67,7 @@ public class Main {
         }else{
             Scanner sc = new Scanner(System.in);
             OrdreListe.udskrivOrdreListen();
-            System.out.println("Skriv det ordrenummer du vil have fjernet");
+            System.out.println("Skriv det ordrenummer du vil have fjernet: ");
             int tempsvar = sc.nextInt();
             OrdreListe.fjernOrdreFraListe(tempsvar);
         }
