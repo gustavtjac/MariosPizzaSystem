@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//opretter vores Ordreliste class
+//Opretter vores Ordreliste class.
 public class OrdreListe {
     private static ArrayList<Ordre> OrdreListe = new ArrayList<>();
     public OrdreListe() {
@@ -17,6 +17,7 @@ public static void udskrivOrdreListen(){
             ordre.visOrdre();
         }
  }
+
 //Laver en metode hvor vi kan fjerne en ordre fra ordrelisten.
 public static void fjernOrdreFraListe(int nummer) {
         int temp = 0;
@@ -28,6 +29,7 @@ public static void fjernOrdreFraListe(int nummer) {
     OrdreListe.remove(temp);
     System.out.println("Ordren er nu slettet.");
 }
+
 //Laver en metode der gør man kan afslutte en ordre og gemme de nødvendige salgsdata.
 public static void FærdiggørOrdreFraListe(int nummer){
         int temp = 0;
@@ -42,10 +44,6 @@ public static void FærdiggørOrdreFraListe(int nummer){
      OrdreListe.remove(temp);
      System.out.println("Ordren er nu fjernet og dataen er talt op");
     }
-
-
-
-
 
 //Laver en getter der får ordrelisten.
 public static ArrayList<Ordre> fåOrdreliste(){

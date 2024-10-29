@@ -32,10 +32,12 @@ public void visOrdre(){
     System.out.println("Ordretotal: " + this.totalPrisOrdre + " Kr");
     System.out.println("Afhentningstidspunkt: " + this.afhentningsTidspunkt.getHour()+":"+this.afhentningsTidspunkt.getMinute());
 }
+
 //Laver en metode der giver Ordrene et ID.
 public int fåOrdreId(){
     return this.ordreId;
 }
+
 //Opretter en metode for at kunne finde total-prisen på en ordre.
 public int udregnTotalPrisOrdre(){
     int tempTotal = 0;
@@ -44,10 +46,13 @@ public int udregnTotalPrisOrdre(){
     }
     return tempTotal;
 }
+
 //Laver en getter til at kunne få totalprisen.
 public int fåTotalPrisOrdre(){
     return this.totalPrisOrdre;
 }
+
+//Laver en metode der tilføjer hvilket nummer på en pizza der er blevet solgt.
 public void tilføjPizzaSalg(){
 for (Pizza pizza : this.pizzaerIOrdre){
     pizza.tilføjSolgtPizza();

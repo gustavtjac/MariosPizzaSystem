@@ -6,6 +6,7 @@ public class Salgsdata {
 public static void tilføjOmsætning(int ordreOmsætning){
         omsætning += ordreOmsætning;
     }
+
 //laver en metode som viser den totale omsætning.
 public static void visOmsætning(){
         System.out.println("Total omsætning: " + omsætning + " Kr.");

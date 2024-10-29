@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-//Laver vores User Interface
 public class Main {
-    public static boolean visOrdreListeAktiv = false;
+//Laver en metode til at vise User Interface.
     public static void visUI(){
         System.out.println("1: Vis menukort");
         System.out.println("2: Tilføj en ordre");
@@ -11,9 +10,11 @@ public class Main {
         System.out.println("5: Fjern ordre");
         System.out.println("6: Vis regnskab");
     }
+//Laver en metode der viser menu.
     public static void visMenu(){
         Pizza.getMenu();
     }
+//Laver en metode der tilføjer en ordre.
     public static void tilføjOrdre(){
         Scanner sc = new Scanner(System.in);
         int tempsvar;
@@ -45,6 +46,7 @@ public class Main {
         }
 
     }
+//Laver en metode der afslutter en ordre, samt gemmer salgsdata.
     public static void færdiggørOrdre(){
 
        if (OrdreListe.fåOrdreliste().size()<1){
@@ -58,6 +60,7 @@ public class Main {
        }
 
     }
+//Laver en metode der sletter en ordre, uden at gemme salgsdata.
     public static void fjernOrdre(){
         if (OrdreListe.fåOrdreliste().size()<1){
             System.out.println("Der er ingen aktive ordre");
@@ -70,9 +73,10 @@ public class Main {
         }
 
     }
+//Laver en metode der viser alle ordre i en liste.
     public static void visOrdreListe() {
         Scanner sc = new Scanner(System.in);
-        visOrdreListeAktiv = true;
+        boolean visOrdreListeAktiv = true;
         System.out.println("Her er hele Ordrelisten");
         while(visOrdreListeAktiv){
             OrdreListe.udskrivOrdreListen();
@@ -91,6 +95,7 @@ public class Main {
         }
 
     }
+//Laver en metode der viser vores omsætning og viser total antal pizzaer solgt, koblet til det specifikke pizza-objekt.
     public static void visRegnskab(){
         Scanner sc = new Scanner(System.in);
         boolean iGang = true;
@@ -101,7 +106,7 @@ public class Main {
             System.out.println("Tryk '0' for at gå tilbage til menuen, tryk på alt andet for at opdatere listen");
             String tempsvar = sc.nextLine();
             if (tempsvar.equals("0")) {
-                visOrdreListeAktiv = false;
+                iGang = false;
                 break;
             }
             else{
@@ -110,7 +115,7 @@ public class Main {
         }
 
     }
-
+//Tilføjer alle vores metoder til vores program, som vi kører i et while-loop.
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Pizza.instansierPizza();
@@ -143,19 +148,11 @@ public class Main {
                         default:
                                 System.out.println("Forkert input!");
                             break;
-
                     }
-
-
             }catch (Exception e) {
                 System.out.println("Forkert input!!");
                 sc.nextLine();
             }
-
         }
-
-
-
     }
-
 }

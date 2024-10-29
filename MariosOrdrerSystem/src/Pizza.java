@@ -11,18 +11,16 @@ private int antalSolgt;
 
 //Laver en constructor.
 Pizza(String pizzaName, String pizzaToppings,int pizzaPris) {
-
     this.pizzaName = pizzaName;
     this.pizzaToppings = pizzaToppings;
     this.pizzaNummer = totalPizzaNummer + 1;
     this.pizzaPris = pizzaPris;
     totalPizzaNummer++;
-
     Menu.add(this);
+
 }
 //Her laver vi en metode hvorpå vi instansierer alle vores pizzaer.
     public static void instansierPizza() {
-
         Pizza pepperoni = new Pizza("Pepperoni", "Tomatsovs, Ost og Pepperoni", 95);
         Pizza hawaii = new Pizza("Hawaii", "Tomatsovs, Ost, Skinke og Ananas", 100);
         Pizza margherita = new Pizza("Margherita", "Tomatsovs og Ost", 85);
@@ -56,11 +54,11 @@ Pizza(String pizzaName, String pizzaToppings,int pizzaPris) {
         Pizza bacon = new Pizza("Bacon", "Tomatsovs, Ost og Bacon", 100);
     }
 
-
 //Opretter en metode til at kunne printe pizzaens attributter i en string som bliver brugt til at instanticiere en menu
 public String getPizzaString() {
     return this.pizzaNummer +": "+ this.pizzaName + " " + this.pizzaToppings + " |Pris: " + this.pizzaPris + " Kr";
 }
+
 //Opretter en metode til at printe pizzaens attributter i en string, uden ingredienserne, for at skabe bedre readability for Mario
 public String kortPizzaString(){
     return this.pizzaNummer + ": " + this.pizzaName;
@@ -74,22 +72,27 @@ public static void getMenu(){
     }
 
 }
+
 //Laver en getter der viser menuen.
 public static ArrayList<Pizza> fåMenuArray(){
     return Menu;
 }
+
 //Laver en getter, for at få pizzaens pris.
 public int fåPizzaPris(){
     return this.pizzaPris;
 }
+
 //Laver en metode som tilføjer solgte antal pizzaer.
 public void tilføjSolgtPizza(){
     this.antalSolgt++;
 }
+
 //Laver en metode som viser total antal pizzaer solgt.
 public int antalSolgtPiza(){
     return this.antalSolgt;
 }
+
 //Laver en metode som viser total antal pizzaer solgt, koblet til det specifikke pizza-objekt.
 public static void visAntalsolgtePizza(){
     for (Pizza pizza : Menu){
