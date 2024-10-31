@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Comparator;
+
 //Opretter vores Ordreliste class.
 public class OrdreListe {
     private static ArrayList<Ordre> OrdreListe = new ArrayList<>();
@@ -13,6 +15,7 @@ public class OrdreListe {
 
     //Opretter en metode som udskriver vores ordreliste.
     public static void udskrivOrdreListen(){
+        OrdreListe.sort(Comparator.comparing(Ordre::fåAfhentningsTid));
         for (Ordre ordre : OrdreListe) {
             ordre.visOrdre();
         }
@@ -41,6 +44,7 @@ public class OrdreListe {
 
         Salgsdata.tilføjOmsætning(OrdreListe.get(temp).fåTotalPrisOrdre());
         OrdreListe.get(temp).tilføjPizzaSalg();
+        Main.tempOrdre = OrdreListe.get(temp);
         OrdreListe.remove(temp);
         System.out.println("Ordren er nu fjernet og data er talt op");
     }

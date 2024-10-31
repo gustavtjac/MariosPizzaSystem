@@ -67,7 +67,6 @@ public class Main {
             OrdreListe.udskrivOrdreListen();
             System.out.println("Skriv det ordrenummer du vil have fjernet: ");
             int tempsvar = sc.nextInt();
-            tempOrdre = OrdreListe.fåOrdreliste().get(tempsvar - 1);
             OrdreListe.FærdiggørOrdreFraListe(tempsvar);
         }
 

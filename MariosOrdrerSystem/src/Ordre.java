@@ -68,4 +68,7 @@ public class Ordre {
         }
 
     }
+    public LocalDateTime fåAfhentningsTid(){
+        return this.afhentningsTidspunkt;
+    }
 }
