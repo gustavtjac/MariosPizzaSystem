@@ -35,7 +35,7 @@ public class OrdreListe {
 
     //Laver en metode der gør man kan afslutte en ordre og gemme de nødvendige salgsdata.
     public static void FærdiggørOrdreFraListe(int nummer){
-        int temp = 0;
+        int temp = -1;
         for (Ordre ordre : OrdreListe) {
             if (nummer==ordre.fåOrdreId()){
                 temp = OrdreListe.indexOf(ordre);
