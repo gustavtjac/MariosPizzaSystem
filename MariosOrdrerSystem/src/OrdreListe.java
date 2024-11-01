@@ -23,7 +23,7 @@ public class OrdreListe {
 
     //Laver en metode hvor vi kan fjerne en ordre fra ordrelisten.
     public static void fjernOrdreFraListe(int nummer) {
-        int temp = 0;
+        int temp = -1;
         for (Ordre ordre : OrdreListe) {
             if (nummer==ordre.fåOrdreId()){
                 temp = OrdreListe.indexOf(ordre);
