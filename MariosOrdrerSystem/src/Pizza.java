@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Comparator;
+
 //Opretter en class der indeholder alle pizzaens attributter
 public class Pizza {
     private String pizzaName;
@@ -109,8 +111,10 @@ public class Pizza {
 
     //Laver en metode som viser total antal pizzaer solgt, koblet til det specifikke pizza-objekt.
     public static void visAntalsolgtePizza(){
+        ArrayList<Pizza> temp = Menu;
+        temp.sort(Comparator.comparing(Pizza::antalSolgtPiza).reversed());
         System.out.println("________________________________________________");
-        for (Pizza pizza : Menu){
+        for (Pizza pizza : temp){
             System.out.println("\u001B[32m" + "Pizza nummer: "+ pizza.pizzaNummer + " Antal solgt: " + pizza.antalSolgtPiza()+ " stk." + "\u001B[0m");
         }
     }
