@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/MariosOrdrerSystem/Content/Content.iml" filepath="$PROJECT_DIR$/MariosOrdrerSystem/Content/Content.iml" />
       <module fileurl="file://$PROJECT_DIR$/MariosOrdrerSystem/MariosOrdrerSystem.iml" filepath="$PROJECT_DIR$/MariosOrdrerSystem/MariosOrdrerSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MariosPizzaSystem.iml" filepath="$PROJECT_DIR$/.idea/MariosPizzaSystem.iml" />
     </modules>

@@ -22,7 +22,9 @@ public class Salgsdata {
 
 public static void opdaterOmsætning(){
     try {
-        Scanner myReader = new Scanner(new File("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\omsætning.txt"));
+
+        String currentDir = System.getProperty("user.dir");
+        Scanner myReader = new Scanner(new File("MariosOrdrerSystem/Content/src/omsætning.txt"));
         int salg = Integer.parseInt(myReader.nextLine());
         Salgsdata.setOmsætning(salg);
         myReader.close();

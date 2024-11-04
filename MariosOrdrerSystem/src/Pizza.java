@@ -26,7 +26,8 @@ public class Pizza {
 
     }
     public static void loadPizza() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\all_pizza_sales.txt", StandardCharsets.UTF_8))) {
+        String currentDir = System.getProperty("user.dir");
+        try (BufferedReader reader = new BufferedReader(new FileReader("MariosOrdrerSystem/Content/src/all_pizza_sales.txt", StandardCharsets.UTF_8))) {
 
             String line;
             while ((line = reader.readLine()) != null) {
@@ -166,7 +167,8 @@ public class Pizza {
         return this.pizzaNummer;
     }
     public static void pizzaSalgMaker() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\all_pizza_sales.txt", StandardCharsets.UTF_8))) {
+        String currentDir = System.getProperty("user.dir");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("MariosOrdrerSystem/Content/src/all_pizza_sales.txt", StandardCharsets.UTF_8))) {
 
             for (Pizza pizza : Pizza.fåMenuArray()) {
                 String line = pizza.filPizzaNavn() + ": " + pizza.antalSolgtPiza() + " Solgte";

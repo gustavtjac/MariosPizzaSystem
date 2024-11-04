@@ -220,13 +220,13 @@ public class Program {
         Pizza.pizzaSalgMaker();
 
         try {
-            File myObj = new File("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\omsætning.txt");
+            File myObj = new File("MariosOrdrerSystem/Content/src/omsætning.txt");
 
             // Create the file if it does not exist
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
-                System.out.println("Updating file for pizza: " + myObj.getName());
+                System.out.println("Omsætning gemt");
             }
             FileWriter myWriter = new FileWriter(myObj);
             if(Salgsdata.getOmsætning()>0){

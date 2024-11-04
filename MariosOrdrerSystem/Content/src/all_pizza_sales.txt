@@ -1,4 +1,4 @@
-1: 3 Solgte
+1: 0 Solgte
 2: 0 Solgte
 3: 0 Solgte
 4: 0 Solgte
@@ -8,8 +8,8 @@
 8: 0 Solgte
 9: 0 Solgte
 10: 0 Solgte
-11: 1 Solgte
-12: 1 Solgte
+11: 0 Solgte
+12: 0 Solgte
 13: 0 Solgte
 14: 0 Solgte
 15: 0 Solgte
@@ -21,7 +21,7 @@
 21: 0 Solgte
 22: 0 Solgte
 23: 0 Solgte
-24: 5 Solgte
+24: 0 Solgte
 25: 0 Solgte
 26: 0 Solgte
 27: 0 Solgte
