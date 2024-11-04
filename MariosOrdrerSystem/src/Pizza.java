@@ -1,5 +1,8 @@
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 //Opretter en class der indeholder alle pizzaens attributter
 public class Pizza {
@@ -17,9 +20,50 @@ public class Pizza {
         this.pizzaToppings = pizzaToppings;
         this.pizzaNummer = totalPizzaNummer + 1;
         this.pizzaPris = pizzaPris;
+
         totalPizzaNummer++;
         Menu.add(this);
 
+    }
+    public static void loadPizza() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\all_pizza_sales.txt", StandardCharsets.UTF_8))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+
+                String[] parts = line.split(": ");
+                if (parts.length == 2) {
+                    String pizzaID = parts[0].trim(); // Extracted ID from file
+                    int salesCount = Integer.parseInt(parts[1].replace(" Solgte", "").trim());
+
+                    boolean pizzaFound = false;
+
+                    for (Pizza pizza : Menu) {
+                        String menuPizzaID = pizza.filPizzaNavn().trim();
+
+                        if (menuPizzaID.equals(pizzaID)) {
+                            pizza.setAntalSolgt(salesCount);
+                            pizzaFound = true;
+                            break;
+                        }
+                    }
+
+                    if (!pizzaFound) {
+                        System.out.println("No matching pizza found for ID: " + pizzaID);
+                    }
+                } else {
+                    System.out.println("Invalid line format: " + line);
+                }
+            }
+
+            System.out.println("All pizza sales data loaded successfully");
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+            e.printStackTrace();
+        }
+    }
+    public String filPizzaNavn(){
+        return String.valueOf(this.pizzaNummer);
     }
     //Her laver vi en metode hvorpå vi instansierer alle vores pizzaer.
     public static void instansierPizza() {
@@ -111,12 +155,30 @@ public class Pizza {
 
     //Laver en metode som viser total antal pizzaer solgt, koblet til det specifikke pizza-objekt.
     public static void visAntalsolgtePizza(){
-        ArrayList<Pizza> temp = Menu;
+        ArrayList<Pizza> temp = new ArrayList<>(Menu);
         temp.sort(Comparator.comparing(Pizza::antalSolgtPiza).reversed());
         System.out.println("________________________________________________");
         for (Pizza pizza : temp){
             System.out.println("\u001B[32m" + "Pizza nummer: "+ pizza.pizzaNummer + " Antal solgt: " + pizza.antalSolgtPiza()+ " stk." + "\u001B[0m");
         }
+    }
+    public int fåPizzaId(){
+        return this.pizzaNummer;
+    }
+    public static void pizzaSalgMaker() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\all_pizza_sales.txt", StandardCharsets.UTF_8))) {
+
+            for (Pizza pizza : Pizza.fåMenuArray()) {
+                String line = pizza.filPizzaNavn() + ": " + pizza.antalSolgtPiza() + " Solgte";
+                writer.write(line);
+                writer.newLine();
+
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        System.out.println("Pizza salg gemt");
     }
 
 }

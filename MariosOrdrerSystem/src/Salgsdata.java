@@ -1,6 +1,11 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 //Laver en salgsdata klasse, for at skabe overblik over hvor mange pizzaer der er blevet solgt i alt og hvad omsætningen er
 public class Salgsdata {
     private static int omsætning = 0;
+
 
     //Laver en metode som tilføjer en ordres totalpris til statisk omsætning.
     public static void tilføjOmsætning(int ordreOmsætning){
@@ -15,6 +20,19 @@ public class Salgsdata {
         omsætning = setoms;
     }
 
+public static void opdaterOmsætning(){
+    try {
+        Scanner myReader = new Scanner(new File("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\omsætning.txt"));
+        int salg = Integer.parseInt(myReader.nextLine());
+        Salgsdata.setOmsætning(salg);
+        myReader.close();
+    }catch (FileNotFoundException e) {
+        System.out.println("File not found for omsætning");
+    }
+}
+    public static int getOmsætning(){
+        return omsætning;
+    }
 
     //laver en metode som viser den totale omsætning.
     public static void visOmsætning(){

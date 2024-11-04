@@ -1,7 +1,14 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;  // Import the IOException class to handle errors
+import java.util.concurrent.ForkJoinPool;
 
 public class Program {
+    private static boolean iGang = true;
     //Laver en metode til at vise User Interface.
     public static void visUI() {
         System.out.println("\u001B[33m" + "1: Vis menukort" + "\u001B[0m");
@@ -11,6 +18,7 @@ public class Program {
         System.out.println("\u001B[31m" + "5: Fjern ordre" + "\u001B[0m");
         System.out.println("\u001B[32m" + "6: Vis regnskab" + "\u001B[0m");
         System.out.println("\u001B[36m" + "7: Genskab sidste fjernet ordre" + "\u001B[0m");
+        System.out.println("\u001B[31m" + "8: Stop program" + "\u001B[0m");
     }
     //Laver en metode der tilføjer en ordre samt giver mulighed for at fjerne en tilføjet pizza til ordren.
     public static void tilføjOrdre() {
@@ -143,7 +151,12 @@ public class Program {
                             String tempsvar2 = sc.nextLine();
                             int antalSolgt = Integer.valueOf(tempsvar2);
 
-                            Pizza.fåMenuArray().get(pizzaNum - 1).setAntalSolgt(antalSolgt);
+                            for (Pizza p : Pizza.fåMenuArray()){
+                                if (p.fåPizzaId()==Integer.valueOf(tempsvar1)) {
+                                    p.setAntalSolgt(antalSolgt);
+                                }
+                            }
+
                             System.out.println("Pizzaen er nu opdateret");
                             pizzaLoop = false;
                         } else {
@@ -152,7 +165,7 @@ public class Program {
                     } catch (NumberFormatException e) {
                         System.out.println("Forkert input!");
                         pizzaLoop = false;
-                    } catch (IndexOutOfBoundsException e) {
+                    }catch (IndexOutOfBoundsException e) {
                         System.out.println("Forkert input!");
                         pizzaLoop = false;
                     }
@@ -201,11 +214,43 @@ public class Program {
             }
         }
     }
+    public static void lukprogram(){
+        iGang = false;
+
+        Pizza.pizzaSalgMaker();
+
+        try {
+            File myObj = new File("C:\\Users\\Gustavo Rock\\Desktop\\skuul\\MariosPizzaSystemR\\MariosOrdrerSystem\\pizzasalg\\omsætning.txt");
+
+            // Create the file if it does not exist
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("Updating file for pizza: " + myObj.getName());
+            }
+            FileWriter myWriter = new FileWriter(myObj);
+            if(Salgsdata.getOmsætning()>0){
+                myWriter.write(String.valueOf(Salgsdata.getOmsætning()));
+            }else {
+                myWriter.write(String.valueOf(0));
+            }
+            myWriter.close();
+
+
+        }catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+
+    }
     public static void startProgram(){
         Scanner sc = new Scanner(System.in);
         Pizza.instansierPizza();
+        Salgsdata.opdaterOmsætning();
+        Pizza.loadPizza();
         int tempSvar;
-        boolean iGang = true;
+
         while(iGang) {
             Program.visUI();
             try {
@@ -231,6 +276,9 @@ public class Program {
                         break;
                     case 7:
                         Program.annullerSidstFjernedeOrdre();
+                        break;
+                    case 8:
+Program.lukprogram();
                         break;
                     default:
                         System.out.println("Forkert input, Tast et nummer fra menuen");
